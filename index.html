@@ -36,7 +36,8 @@
 		});
 
 		// ViewModel!
-		ko.applyBindings( viewModel );	
+		ko.applyBindings( viewModel );
+		drawCanvas( "", "" );
 	});
 	
 
@@ -44,15 +45,29 @@
 
 </head>
 <body>
+	<div>
+		<h1>Karnaugh mapper tool</h1>
+	</div>
 
-	<div id="#content">
-		<div id="varBoxWrapper" class="input-group input-group-lg">
-			<input id="varBox" class="form-control" type="text" placeholder="Enter variables..."></input>
-		</div>
-		<div id="cmdBoxWrapper" class="input-group input-group-lg">
-			<input id="cmdBox" class="form-control" type="text" placeholder="Enter expression..."></input>
-			<div class="input-group-btn"><button id="cmdButton" class="btn btn-primary">Go</button></div>
-		</div>
+	<div id="content-wrapper">
+	<div id="content">
+
+		<form class="form-horizontal" role="form">
+            <div class="form-group">
+				<div id="varBoxWrapper" class="input-group input-group-lg">
+					<span class="input-group-addon">Variables</span>
+					<input id="varBox" class="form-control" type="text" placeholder="Enter variables..."></input>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div id="cmdBoxWrapper" class="input-group input-group-lg">
+					<span class="input-group-addon">Expression</span>
+					<input id="cmdBox" class="form-control" type="text" placeholder="Enter expression..."></input>
+					<div class="input-group-btn"><button id="cmdButton" class="btn btn-primary" type="button">Go</button></div>
+				</div>
+			</div>
+		</form>
 
 		<div id="diagram-wrapper">
 			<!-- <div id="diagram" data-bind="foreach: rows">
@@ -60,8 +75,7 @@
 			</div> -->
 			<canvas id="karnaugh" width="300" height="300"></canvas>
 		</div>
-
-
+	</div>
 	</div>
 
 </body>

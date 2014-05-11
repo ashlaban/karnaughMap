@@ -3,10 +3,12 @@ body
 	height: 100%;
 	min-height: 100%;
 	max-height: 100%;
+}
 
-	display: flex;
-	align-items: center;
-	justify-content: center;
+h1
+{
+	text-align: center;
+	padding-bottom: 2em;
 }
 
 #content
@@ -14,11 +16,21 @@ body
 	height: 100%;
 	max-height: 100%;
 
-	font-family: "Lucida Console", Monaco, monospace;
-	text-align: justify;
+	display: flex;
+	align-items: center;
+	justify-content: top;
+	flex-direction: column;
+
+	/*font-family: "Lucida Console", Monaco, monospace;
+	text-align: justify;*/
 }
 
-#cmdBoxWrapper
+.input-group-addon
+{
+	width: 7em;
+}
+
+.form-group
 {
 	margin-top   : 1em;
 	margin-bottom: 1em;

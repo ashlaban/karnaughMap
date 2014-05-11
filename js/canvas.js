@@ -10,9 +10,12 @@ var nVars = {x:null, y:null};
 
 function drawCanvas(bitstring2d, variables)
 {
+	console.log("TEst")
+
 	var canvas = document.getElementById('karnaugh');
 	var ctx = canvas.getContext('2d');
 
+	// Global calculations
 	nVars.x = Math.floor(variables.length/2);
 	nVars.y = Math.ceil(variables.length/2);
 
@@ -21,8 +24,14 @@ function drawCanvas(bitstring2d, variables)
 	totalSize.x = externalPadding.x + contentSize.x;
 	totalSize.y = externalPadding.y + contentSize.y;
 
+	// Actual drawing
 	clearContext( ctx );
 
+	// Draw frame
+	ctx.strokeStyle = "black";
+	ctx.strokeRect( 0, 0, canvas.width, canvas.height );
+
+	// Draw the rest
 	ctx.save();
 	ctx.translate( canvas.width/2, canvas.height/2 );
 	ctx.translate( -contentSize.x/2, -contentSize.y/2 );
@@ -80,7 +89,7 @@ function drawLabelY( variables, ctx )
 	ctx.font="20px Georgia";
 	
 	// Draw variables
-	var varText = variables.slice(nVars.y);
+	var varText = variables.slice(nVars.x);
 	ctx.textAlign="left";
 	ctx.textBaseline="middle";
  	ctx.fillText( varText, 0, externalPadding.y + contentSize.y/2 );
