@@ -1,0 +1,68 @@
+<html>
+<head>
+
+	<script src="js/lib/jquery-2.0.3.min.js"></script>
+	<script src="js/lib/knockout-3.0.0.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+
+	<script src="js/main.js"></script>
+	<script src="js/canvas.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/test.css">
+
+	<script>
+
+	function ViewModel()
+	{
+		var self = this;
+
+		self.rows = ko.observable( ["0000", "1111", "0000", "1111"] );
+
+	}
+
+	var viewModel = new ViewModel();
+	
+	$(document).ready( function() {
+		// Register keyboard bindings
+		$('#varBox').keypress(function(e) { if(e.which == 13) { $('#cmdButton').click() } });
+		$('#cmdBox').keypress(function(e) { if(e.which == 13) { $('#cmdButton').click() } });
+		$("#cmdButton").click(function () {
+			var expr = $('#cmdBox').val();
+			var vars = $('#varBox').val();
+			var ret = go( expr, vars );
+			viewModel.rows(ret);
+			drawCanvas( ret, vars );
+		});
+
+		// ViewModel!
+		ko.applyBindings( viewModel );	
+	});
+	
+
+	</script>
+
+</head>
+<body>
+
+	<div id="#content">
+		<div id="varBoxWrapper" class="input-group input-group-lg">
+			<input id="varBox" class="form-control" type="text" placeholder="Enter variables..."></input>
+		</div>
+		<div id="cmdBoxWrapper" class="input-group input-group-lg">
+			<input id="cmdBox" class="form-control" type="text" placeholder="Enter expression..."></input>
+			<div class="input-group-btn"><button id="cmdButton" class="btn btn-primary">Go</button></div>
+		</div>
+
+		<div id="diagram-wrapper">
+			<!-- <div id="diagram" data-bind="foreach: rows">
+				<div data-bind="text: $data"></div>
+			</div> -->
+			<canvas id="karnaugh" width="300" height="300"></canvas>
+		</div>
+
+
+	</div>
+
+</body>
+</html>

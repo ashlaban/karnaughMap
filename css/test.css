@@ -1,0 +1,34 @@
+body
+{
+	height: 100%;
+	min-height: 100%;
+	max-height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#content
+{
+	height: 100%;
+	max-height: 100%;
+
+	font-family: "Lucida Console", Monaco, monospace;
+	text-align: justify;
+}
+
+#cmdBoxWrapper
+{
+	margin-top   : 1em;
+	margin-bottom: 1em;
+
+	width: 80ex;
+}
+
+#diagram-wrapper
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
