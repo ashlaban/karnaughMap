@@ -25,7 +25,7 @@ function lettersUsed( string )
 	var isLetter = function (curVal, index, arr){ if (letters.indexOf(curVal) == -1 && isInSet("abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ", curVal)) letters.push(curVal); }
 
 	string.split("").map( isLetter );
-	return letters.sort();
+	return letters;
 }
 
 function isInSet( setString, val )

@@ -10,8 +10,6 @@ var nVars = {x:null, y:null};
 
 function drawCanvas(bitstring2d, variables)
 {
-	console.log("TEst")
-
 	var canvas = document.getElementById('karnaugh');
 	var ctx = canvas.getContext('2d');
 
@@ -105,7 +103,7 @@ function drawLabelY( variables, ctx )
 		var x = 0;
 		var y = externalPadding.y + i*(size.y+internalPadding.y);
 
-		ctx.fillText( graycode[i], x + externalPadding.x - 2, y + size.y/2 );
+		ctx.fillText( graycode[i], x + externalPadding.x - 5, y + size.y/2 );
 	};
 }
 function drawGrid4by4( bitstring2d, ctx )

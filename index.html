@@ -32,12 +32,13 @@
 			var vars = $('#varBox').val();
 			var ret = go( expr, vars );
 			viewModel.rows(ret);
-			drawCanvas( ret, vars );
+			drawCanvas( grayCode(ret), vars );
 		});
 
 		// ViewModel!
 		ko.applyBindings( viewModel );
-		drawCanvas( "", "" );
+		var grid = go("ac'+a'c", "abcd")
+		drawCanvas( grid, "abcd" );
 	});
 	
 
@@ -49,21 +50,20 @@
 		<h1>Karnaugh mapper tool</h1>
 	</div>
 
-	<div id="content-wrapper">
 	<div id="content">
 
 		<form class="form-horizontal" role="form">
             <div class="form-group">
 				<div id="varBoxWrapper" class="input-group input-group-lg">
 					<span class="input-group-addon">Variables</span>
-					<input id="varBox" class="form-control" type="text" placeholder="Enter variables..."></input>
+					<input id="varBox" class="form-control" type="text" placeholder="e.g. abcd"></input>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div id="cmdBoxWrapper" class="input-group input-group-lg">
 					<span class="input-group-addon">Expression</span>
-					<input id="cmdBox" class="form-control" type="text" placeholder="Enter expression..."></input>
+					<input id="cmdBox" class="form-control" type="text" placeholder="e.g. ac'+a'c"></input>
 					<div class="input-group-btn"><button id="cmdButton" class="btn btn-primary" type="button">Go</button></div>
 				</div>
 			</div>
@@ -75,7 +75,32 @@
 			</div> -->
 			<canvas id="karnaugh" width="300" height="300"></canvas>
 		</div>
-	</div>
+
+		<div>
+			<h2>How to use</h2>
+			<p>Enter the variables you want to use in the variables field. Variable names can only be one letter. Example; Entering "ab" yields two variables, one named "a" and one named "b". Entering "her" yields three variables: "h", "e" and "r".</p>
+			<p>Enter the expression you want evaluated in the <emph>expression</emph> field. The expression can use the variables named in the <emph>variables</emph> field and the constants "0" and "1"
+			<p>The operators currently supported are logical and, or, not and xor. These can be written as javascript operators or, preferably, in a more succinct way as follows:</p>
+			<dl>
+				<dt>and</dt><dd>concatenate variables</dd>
+				<dt>or</dt><dd>+, binary operator</dd>
+				<dt>xor</dt><dd>^, binary operator</dd>
+				<dt>not</dt><dd>', suffix unary operator</dd>
+			</dl>
+			The resulting Karnaugh diagram will be drawn in the box. Currently up to four variables are supported.
+			<h3>Examples</h3>
+			<dl>
+				<dt>Variables</dt><dd>abc<dd>
+				<dt>Expression</dt><dd>(a+bc)'</dd>
+				<dt>Equivalent</dt><dd>not ( a or (b and c) )</dd>
+			</dl>
+			<dl>
+				<dt>Variables</dt><dd>xy<dd>
+				<dt>Expression</dt><dd>x^y' + 1</dd>
+				<dt>Equivalent</dt><dd>(x xor (not y)) or 1</dd>
+			</dl>
+			Now, try it!
+		</div>
 	</div>
 
 </body>
