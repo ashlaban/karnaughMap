@@ -1,5 +1,10 @@
 body
 {
+	display: -webkit-flex;
+	-webkit-align-items: center;
+	-webkit-justify-content: top;
+	-webkit-flex-direction: column;
+
 	display: flex;
 	align-items: center;
 	justify-content: top;
@@ -22,6 +27,11 @@ dt
 #content
 {
 	width: 40em;
+
+	display: -webkit-flex;
+	-webkit-align-items: center;
+	-webkit-justify-content: top;
+	-webkit-flex-direction: column;
 
 	display: flex;
 	align-items: center;
